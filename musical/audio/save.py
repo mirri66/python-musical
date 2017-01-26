@@ -1,4 +1,4 @@
-import encode
+from . import encode
 
 # TODO: Support other formats and settings
 

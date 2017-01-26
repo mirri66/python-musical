@@ -1,4 +1,4 @@
-from note import Note
+from .note import Note
 import itertools
 
 # TODO: Non-rooted scales? (just hold intervals and apply root later on)
@@ -54,7 +54,7 @@ class Scale:
     return len(self.intervals)
 
   def __iter__(self):
-    return iter(self.get(i) for i in xrange(len(self)))
+    return iter(self.get(i) for i in range(len(self)))
 
   @classmethod
   def intervals_from_name(self, name):
@@ -74,8 +74,8 @@ class Scale:
       index, intervals = abs(index), reversed(self.intervals)
     intervals = itertools.cycle(self.intervals)
     note = self.root
-    for i in xrange(index):
-      note = note.transpose(intervals.next())
+    for i in range(index):
+      note = note.transpose(next(intervals))
     return note
 
   def index(self, note):
@@ -84,10 +84,10 @@ class Scale:
     intervals = itertools.cycle(self.intervals)
     index = 0
     x = self.root
-    while x < note:
-      x = x.transpose(intervals.next())
+    while x.index < note.index:
+      x = x.transpose(next(intervals))
       index += 1
-    if x == note:
+    if x.index == note.index:
       return index
     raise ValueError('%s not in %s' % (note, self))
 

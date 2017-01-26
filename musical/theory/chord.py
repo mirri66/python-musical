@@ -1,4 +1,4 @@
-from scale import Scale
+from .scale import Scale
 
 # TODO: Chord identification
 # TODO: Extended and "added note" chords

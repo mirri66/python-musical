@@ -33,15 +33,15 @@ timeline.add(time + 0.3, Hit(chord.notes[1].transpose(12), 4.0))
 timeline.add(time + 0.4, Hit(chord.notes[2].transpose(12), 4.0))
 timeline.add(time + 0.5, Hit(chord.notes[0].transpose(12), 4.0))
 
-print "Rendering audio..."
+print("Rendering audio...")
 
 data = timeline.render()
 
 # Reduce volume to 25%
 data = data * 0.25
 
-print "Playing audio..."
+print("Playing audio...")
 
 playback.play(data)
 
-print "Done!"
+print("Done!")

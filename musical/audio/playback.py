@@ -1,5 +1,5 @@
 import numpy
-import encode
+from . import encode
 
 
 def pygame_play(data, rate=44100):

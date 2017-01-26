@@ -1,4 +1,4 @@
-import source
+from . import source
 
 # TODO: More effects. Distortion, echo, delay, reverb, phaser, pitch shift?
 # TODO: Better generalize chorus/flanger (they share a lot of code)
@@ -7,7 +7,7 @@ def modulated_delay(data, modwave, dry, wet):
   ''' Use LFO "modwave" as a delay modulator (no feedback)
   '''
   out = data.copy()
-  for i in xrange(len(data)):
+  for i in range(len(data)):
     index = int(i - modwave[i])
     if index >= 0 and index < len(data):
       out[i] = data[i] * dry + data[index] * wet
@@ -18,7 +18,7 @@ def feedback_modulated_delay(data, modwave, dry, wet):
   ''' Use LFO "modwave" as a delay modulator (with feedback)
   '''
   out = data.copy()
-  for i in xrange(len(data)):
+  for i in range(len(data)):
     index = int(i - modwave[i])
     if index >= 0 and index < len(data):
       out[i] = out[i] * dry + out[index] * wet

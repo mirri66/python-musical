@@ -75,7 +75,7 @@ def ringbuffer(data, length, decay=1.0, rate=44100):
   phase = len(data)
   length = int(rate * length)
   out = numpy.resize(data, length)
-  for i in xrange(phase, length):
+  for i in range(phase, length):
     index = i - phase
     out[i] = (out[index] + out[index + 1]) * 0.5 * decay
   return out
